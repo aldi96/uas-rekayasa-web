@@ -10,6 +10,31 @@
     			<iframe width="700" height="550" src="<?php echo $url; ?>" frameborder="0" allowfullscreen></iframe>
   			</div>
 		</div>
+      <div class="panel panel-default">
+        <div class="panel-body">
+               <?php echo validation_errors(); ?>
+               <?php echo form_open_multipart('komentar/komen'); ?>                
+                <label>Kometar</label>
+                <input type="text" class="form-control" name="komentar" required="">
+              <br>
+                <button type="submit" name="submit" class="btn btn-primary">Kirim</button>
+                </form>
+        </div>
+    </div>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <label>List Komentar</label> <br>
+          <?php 
+          if (isset($komentar)) {
+            foreach ($komentar as $data) : ?>
+              <pre><?php  echo $data->pesan; ?><p align="right"><a href="<?php echo base_url() ?>index.php/komentar/edit/<?php  echo $data->id; ?>">Edit</a>|<a href="<?php echo base_url() ?>index.php/komentar/hapus/<?php  echo $data->id; ?>">Hapus</a></p></pre>
+              <hr>
+            <?php endforeach; 
+          }else{
+            echo "Kosong";
+          }?>          
+        </div>
+    </div>
     </div>
     <div class="col-md-4 col-sm-12">
     	<div class="panel panel-default">
@@ -32,10 +57,7 @@
             </tr>
             <tr><td><br></td></tr>
             <tr>
-              <td><a href="<?php echo base_url();?>index.php/main/show/5"><img src="<?php echo base_url();?>assets2/img/CI2.jpg" width="150" height="90" style="float : left">Tutorial Codeigniter 3 - Memasukan 
-}
-
-Template</a></td>
+              <td><a href="<?php echo base_url();?>index.php/main/show/5"><img src="<?php echo base_url();?>assets2/img/CI2.jpg" width="150" height="90" style="float : left">Tutorial Codeigniter 3 - Memasukan Template</a></td>
             </tr>
             <tr><td><br></td></tr>
             <tr>
@@ -50,4 +72,5 @@ Template</a></td>
     </div>
     </div>
   </div>
+
 	<?php include "footer.php"; ?>

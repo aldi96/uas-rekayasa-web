@@ -9,7 +9,8 @@ class Main extends CI_Controller {
 	}
 
 	public function show($id)
-	{
+	{	
+		$data['komentar'] = $this->komentar_model->getKomentar();
 		if ($id==1) {
 			$data['url'] = "https://www.youtube.com/embed/gqOEoUR5RHg";
 		}
